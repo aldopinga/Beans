@@ -1,7 +1,7 @@
 === Beans ===
 Requires at least: WordPress 4.2
 Tested up to: WordPress 4.4
-Version: 1.2.5
+Version: 1.2.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: white, light, one-column, two-columns, three-columns, right-sidebar, left-sidebar, responsive-layout, fluid-layout, fixed-layout, custom-header, custom-background, custom-menu, editor-style, featured-images, microformats, post-formats, translation-ready
