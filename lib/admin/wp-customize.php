@@ -31,13 +31,13 @@ function beans_do_register_wp_customize_options() {
 	$fields = array(
 		array(
 			'id' => 'beans_logo_image',
-			'label' => __( 'Logo Image', 'tm-beans' ),
+			'label' => __( 'Logo Image', 'beans' ),
 			'type' => 'WP_Customize_Image_Control',
 			'transport' => 'refresh'
 		)
 	);
 
-	beans_register_wp_customize_options( $fields, 'title_tagline', array( 'title' => __( 'Branding', 'tm-beans' ) ) );
+	beans_register_wp_customize_options( $fields, 'title_tagline', array( 'title' => __( 'Branding', 'beans' ) ) );
 
 	// Get layout option without default for the count.
 	$options = beans_get_layouts_for_options();
@@ -48,7 +48,7 @@ function beans_do_register_wp_customize_options() {
 		$fields = array(
 			array(
 				'id' => 'beans_layout',
-				'label' => __( 'Default Layout', 'tm-beans' ),
+				'label' => __( 'Default Layout', 'beans' ),
 				'type' => 'radio',
 				'default' => beans_get_default_layout(),
 				'options' => $options,
@@ -56,14 +56,14 @@ function beans_do_register_wp_customize_options() {
 			)
 		);
 
-		beans_register_wp_customize_options( $fields, 'beans_layout', array( 'title' => __( 'Default Layout', 'tm-beans' ), 'priority' => 1000 ) );
+		beans_register_wp_customize_options( $fields, 'beans_layout', array( 'title' => __( 'Default Layout', 'beans' ), 'priority' => 1000 ) );
 
 	}
 
 	$fields = array(
 		array(
 			'id' => 'beans_viewport_width_group',
-			'label' => __( 'Viewport Width', 'tm-beans' ),
+			'label' => __( 'Viewport Width', 'beans' ),
 			'type' => 'group',
 			'fields' => array(
 				array(
@@ -84,7 +84,7 @@ function beans_do_register_wp_customize_options() {
 		),
 		array(
 			'id' => 'beans_viewport_height_group',
-			'label' => __( 'Viewport Height', 'tm-beans' ),
+			'label' => __( 'Viewport Height', 'beans' ),
 			'type' => 'group',
 			'fields' => array(
 				array(
@@ -105,6 +105,6 @@ function beans_do_register_wp_customize_options() {
 		)
 	);
 
-	beans_register_wp_customize_options( $fields, 'beans_preview', array( 'title' => __( 'Preview Tools', 'tm-beans' ), 'priority' => 1010 ) );
+	beans_register_wp_customize_options( $fields, 'beans_preview', array( 'title' => __( 'Preview Tools', 'beans' ), 'priority' => 1010 ) );
 
 }

@@ -22,7 +22,7 @@ function beans_updater( $value ) {
 		return;
 
 	$data = get_site_transient( 'beans_updater' );
-	$theme = wp_get_theme( 'tm-beans' );
+	$theme = wp_get_theme( 'beans' );
 
 	if ( !$theme->exists() )
 		return $value;

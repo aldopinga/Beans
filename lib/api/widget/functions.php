@@ -54,7 +54,7 @@ function beans_register_widget_area( $args = array(), $widget_control = array() 
         'beans_type' => 'stack',
         'beans_show_widget_title' => true,
         'beans_show_widget_badge' => false,
-        'beans_widget_badge_content' => __( 'Hello', 'tm-beans' )
+        'beans_widget_badge_content' => __( 'Hello', 'beans' )
     ) );
 
     /**

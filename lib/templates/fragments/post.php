@@ -63,7 +63,7 @@ function beans_post_search_title() {
 
 	echo beans_open_markup( 'beans_search_title', 'h1', array( 'class' => 'uk-article-title') );
 
-		echo beans_output( 'beans_search_title_text', __( 'Search results for: ', 'tm-beans' ) ) . get_search_query();
+		echo beans_output( 'beans_search_title_text', __( 'Search results for: ', 'beans' ) ) . get_search_query();
 
 	echo beans_close_markup( 'beans_search_title', 'h1' );
 
@@ -272,7 +272,7 @@ function beans_post_more_link() {
 		'class' => 'more-link',
 	) );
 
-		$output .= beans_output( 'beans_post_more_link_text', __( 'Continue reading', 'tm-beans' ) );
+		$output .= beans_output( 'beans_post_more_link_text', __( 'Continue reading', 'beans' ) );
 
 		$output .= beans_open_markup( 'beans_next_icon[_more_link]', 'i', array(
 					'class' => 'uk-icon-angle-double-right uk-margin-small-left'
@@ -296,7 +296,7 @@ beans_add_smart_action( 'beans_post_body', 'beans_post_content_navigation', 20 )
 function beans_post_content_navigation() {
 
 	echo wp_link_pages( array(
-		'before' => beans_open_markup( 'beans_post_content_navigation', 'p', array( 'class' => 'uk-text-bold' ) ) . beans_output( 'beans_post_content_navigation_text', __( 'Pages:', 'tm-beans' ) ),
+		'before' => beans_open_markup( 'beans_post_content_navigation', 'p', array( 'class' => 'uk-text-bold' ) ) . beans_output( 'beans_post_content_navigation_text', __( 'Pages:', 'beans' ) ),
 		'after' => beans_close_markup( 'beans_post_content_navigation', 'p' ),
 		'echo' => false
 	) );
@@ -453,7 +453,7 @@ function beans_post_navigation() {
 			// Previous.
 			echo beans_open_markup( 'beans_post_navigation_item[_previous]', 'li', array( 'class' => 'uk-pagination-previous' ) );
 
-				echo get_previous_post_link( '%link', __( 'Previous', 'tm-beans' ) );
+				echo get_previous_post_link( '%link', __( 'Previous', 'beans' ) );
 
 			echo beans_close_markup( 'beans_post_navigation_item[_previous]', 'li' );
 
@@ -464,7 +464,7 @@ function beans_post_navigation() {
 			// Next.
 			echo beans_open_markup( 'beans_post_navigation_item[_next]', 'li', array( 'class' => 'uk-pagination-next' ) );
 
-				echo get_next_post_link( '%link', __( 'Next', 'tm-beans' ) );
+				echo get_next_post_link( '%link', __( 'Next', 'beans' ) );
 
 			echo beans_close_markup( 'beans_post_navigation_item[_next]', 'li' );
 
@@ -522,7 +522,7 @@ function beans_posts_pagination() {
 
 					echo beans_close_markup( 'beans_previous_icon[_posts_pagination]', 'i' );
 
-					echo beans_output( 'beans_previous_text[_posts_pagination]', __( 'Previous', 'tm-beans' ) );
+					echo beans_output( 'beans_previous_text[_posts_pagination]', __( 'Previous', 'beans' ) );
 
 				echo beans_close_markup( 'beans_previous_link[_posts_pagination]', 'a' );
 
@@ -604,7 +604,7 @@ function beans_posts_pagination() {
 					'href' => esc_url( next_posts( $count, false ) )
 				), $current );
 
-					echo beans_output( 'beans_next_text[_posts_pagination]', __( 'Next', 'tm-beans' ) );
+					echo beans_output( 'beans_next_text[_posts_pagination]', __( 'Next', 'beans' ) );
 
 					echo beans_open_markup( 'beans_next_icon[_posts_pagination]', 'i', array(
 						'class' => 'uk-icon-angle-double-right uk-margin-small-left'
@@ -638,7 +638,7 @@ function beans_no_post() {
 
 			echo beans_open_markup( 'beans_post_title', 'h1', array( 'class' => 'uk-article-title' ) );
 
-				echo beans_output( 'beans_no_post_article_title_text', __( 'Whoops, no result found!', 'tm-beans' ) );
+				echo beans_output( 'beans_no_post_article_title_text', __( 'Whoops, no result found!', 'beans' ) );
 
 			echo beans_close_markup( 'beans_post_title', 'h1' );
 
@@ -650,7 +650,7 @@ function beans_no_post() {
 
 				echo beans_open_markup( 'beans_no_post_article_content', 'p', array( 'class' => 'uk-alert uk-alert-warning' ) );
 
-					echo beans_output( 'beans_no_post_article_content_text', __( 'It looks like nothing was found at this location. Maybe try a search?', 'tm-beans' ) );
+					echo beans_output( 'beans_no_post_article_content_text', __( 'It looks like nothing was found at this location. Maybe try a search?', 'beans' ) );
 
 				echo beans_close_markup( 'beans_no_post_article_content', 'p' );
 
@@ -684,7 +684,7 @@ function beans_post_password_form() {
 	// Notice.
 	$output = beans_open_markup( 'beans_password_form_notice', 'p', array( 'class' => 'uk-alert uk-alert-warning' ) );
 
-		$output .= beans_output( 'beans_password_form_notice_text', __( 'This post is protected. To view it, enter the password below!', 'tm-beans' ) );
+		$output .= beans_output( 'beans_password_form_notice_text', __( 'This post is protected. To view it, enter the password below!', 'beans' ) );
 
 	$output .= beans_close_markup( 'beans_password_form_notice', 'p' );
 
@@ -698,7 +698,7 @@ function beans_post_password_form() {
 		$output .= beans_selfclose_markup( 'beans_password_form_input', 'input', array(
 			'class' => 'uk-margin-small-top uk-margin-small-right',
 			'type' => 'password',
-			'placeholder' => esc_attr( apply_filters( 'beans_password_form_input_placeholder', __( 'Password', 'tm-beans' ) ) ),
+			'placeholder' => esc_attr( apply_filters( 'beans_password_form_input_placeholder', __( 'Password', 'beans' ) ) ),
 			'name' => 'post_password'
 		) );
 
@@ -706,7 +706,7 @@ function beans_post_password_form() {
 			'class' => 'uk-button uk-margin-small-top',
 			'type' => 'submit',
 			'name' => 'submit',
-			'value' => esc_attr( apply_filters( 'beans_password_form_submit_text', __( 'Submit', 'tm-beans' ) ) )
+			'value' => esc_attr( apply_filters( 'beans_password_form_submit_text', __( 'Submit', 'beans' ) ) )
 		) );
 
 	$output .= beans_close_markup( 'beans_password_form', 'form' );

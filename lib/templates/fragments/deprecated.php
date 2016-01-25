@@ -54,7 +54,7 @@ function beans_wp_title( $title, $sep ) {
 
 	// Add a page number if necessary.
 	if ( $paged >= 2 || $page >= 2 )
-		$title .= " $sep " . sprintf( __( 'Page %s', 'tm-beans' ), max( $paged, $page ) );
+		$title .= " $sep " . sprintf( __( 'Page %s', 'beans' ), max( $paged, $page ) );
 
 	return $title;
 

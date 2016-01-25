@@ -32,7 +32,7 @@ class _Beans_Compiler_Options {
 			array(
 				'id' => 'beans_compiler_items',
 				'type' => 'flush_cache',
-				'description' => __( 'Clear CSS and Javascript cached files. New cached versions will be compiled on page load.', 'tm-beans' )
+				'description' => __( 'Clear CSS and Javascript cached files. New cached versions will be compiled on page load.', 'beans' )
 			)
 		);
 
@@ -42,10 +42,10 @@ class _Beans_Compiler_Options {
 				array(
 					'id' => 'beans_compile_all_styles',
 					'label' => false,
-					'checkbox_label' => __( 'Compile all WordPress styles', 'tm-beans' ),
+					'checkbox_label' => __( 'Compile all WordPress styles', 'beans' ),
 					'type' => 'checkbox',
 					'default' => false,
-					'description' => __( 'Compile and cache all the CSS files that have been enqueued to the WordPress head.', 'tm-beans' )
+					'description' => __( 'Compile and cache all the CSS files that have been enqueued to the WordPress head.', 'beans' )
 				)
 			) );
 
@@ -54,7 +54,7 @@ class _Beans_Compiler_Options {
 			$fields = array_merge( $fields, array(
 				array(
 					'id' => 'beans_compile_all_scripts_group',
-					'label' => __( 'Compile all WordPress scripts', 'tm-beans' ),
+					'label' => __( 'Compile all WordPress scripts', 'beans' ),
 					'type' => 'group',
 					'fields' => array(
 						array(
@@ -73,12 +73,12 @@ class _Beans_Compiler_Options {
 							)
 						),
 					),
-					'description' => __( 'Compile and cache all the Javascript files that have been enqueued to the WordPress head.<!--more-->JavaSript is outputted in the footer if the level is set to <strong>Aggressive</strong> and might conflict with some third party plugins which are not following WordPress standards.', 'tm-beans' )
+					'description' => __( 'Compile and cache all the Javascript files that have been enqueued to the WordPress head.<!--more-->JavaSript is outputted in the footer if the level is set to <strong>Aggressive</strong> and might conflict with some third party plugins which are not following WordPress standards.', 'beans' )
 				)
 			) );
 
 		beans_register_options( $fields, 'beans_settings', 'compiler_options', array(
-			'title' => __( 'Compiler options', 'tm-beans' ),
+			'title' => __( 'Compiler options', 'beans' ),
 			'context' => 'normal'
 		) );
 
@@ -106,7 +106,7 @@ class _Beans_Compiler_Options {
 		if ( !beans_post( 'beans_flush_compiler_cache' ) )
 			return;
 
-		echo '<div id="message" class="updated"><p>' . __( 'Cache flushed successfully!', 'tm-beans' ) . '</p></div>' . "\n";
+		echo '<div id="message" class="updated"><p>' . __( 'Cache flushed successfully!', 'beans' ) . '</p></div>' . "\n";
 
 	}
 
@@ -119,7 +119,7 @@ class _Beans_Compiler_Options {
 		if ( $field['id'] !== 'beans_compiler_items' )
 			return;
 
-		echo '<input type="submit" name="beans_flush_compiler_cache" value="' . __( 'Flush assets cache', 'tm-beans' ) . '" class="button-secondary" />';
+		echo '<input type="submit" name="beans_flush_compiler_cache" value="' . __( 'Flush assets cache', 'beans' ) . '" class="button-secondary" />';
 
 	}
 
@@ -130,7 +130,7 @@ class _Beans_Compiler_Options {
 	public function maybe_disable_style_notice() {
 
 		if ( get_option( 'beans_compile_all_styles' ) && _beans_is_compiler_dev_mode() )
-			echo '<br /><span style="color: #d85030;">' . __( 'Styles are not compiled in development mode.', 'tm-beans' ) . '</span>';
+			echo '<br /><span style="color: #d85030;">' . __( 'Styles are not compiled in development mode.', 'beans' ) . '</span>';
 
 	}
 
@@ -140,7 +140,7 @@ class _Beans_Compiler_Options {
 	public function maybe_disable_scripts_notice() {
 
 		if ( get_option( 'beans_compile_all_scripts' ) && _beans_is_compiler_dev_mode() )
-			echo '<br /><span style="color: #d85030;">' . __( 'Scripts are not compiled in development mode.', 'tm-beans' ) . '</span>';
+			echo '<br /><span style="color: #d85030;">' . __( 'Scripts are not compiled in development mode.', 'beans' ) . '</span>';
 
 	}
 

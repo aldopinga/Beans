@@ -33,12 +33,12 @@ class _Beans_Image_Options {
 			array(
 				'id' => 'beans_edited_images_directories',
 				'type' => 'flush_edited_images',
-				'description' => __( 'Clear all edited images. New images will be created on page load.', 'tm-beans' )
+				'description' => __( 'Clear all edited images. New images will be created on page load.', 'beans' )
 			)
 		);
 
 		beans_register_options( $fields, 'beans_settings', 'images_options', array(
-			'title' => __( 'Images options', 'tm-beans' ),
+			'title' => __( 'Images options', 'beans' ),
 			'context' => beans_get( 'beans_settings', $wp_meta_boxes ) ? 'column' : 'normal' // Check of other beans boxes.
 		) );
 
@@ -66,7 +66,7 @@ class _Beans_Image_Options {
 		if ( !beans_post( 'beans_flush_edited_images' ) )
 			return;
 
-		echo '<div id="message" class="updated"><p>' . __( 'Images flushed successfully!', 'tm-beans' ) . '</p></div>' . "\n";
+		echo '<div id="message" class="updated"><p>' . __( 'Images flushed successfully!', 'beans' ) . '</p></div>' . "\n";
 
 	}
 
@@ -79,7 +79,7 @@ class _Beans_Image_Options {
 		if ( $field['id'] !== 'beans_edited_images_directories' )
 			return;
 
-		echo '<input type="submit" name="beans_flush_edited_images" value="' . __( 'Flush images', 'tm-beans' ) . '" class="button-secondary" />';
+		echo '<input type="submit" name="beans_flush_edited_images" value="' . __( 'Flush images', 'beans' ) . '" class="button-secondary" />';
 
 	}
 
