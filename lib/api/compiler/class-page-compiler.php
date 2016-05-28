@@ -6,7 +6,7 @@
  *
  * @package API\Compiler
  */
-class _Beans_Page_Compiler {
+final class _Beans_Page_Compiler {
 
 	/**
 	 * Compiler dequeued scripts.
@@ -96,7 +96,7 @@ class _Beans_Page_Compiler {
 				if ( $args->args != 'all' )
 					$args->src = add_query_arg( array( 'beans_compiler_media_query' => $args->args ), $args->src );
 
-				wp_dequeue_style( $id );
+				$$set_global->done[] = $id;
 
 			} elseif ( $type == 'script' ) {
 
@@ -135,7 +135,7 @@ class _Beans_Page_Compiler {
 			if ( isset( $args->extra['data'] ) )
 				$localized .= $args->extra['data'] . "\n";
 
-			wp_dequeue_script( $id );
+			$wp_scripts->done[] = $id;
 
 		}
 

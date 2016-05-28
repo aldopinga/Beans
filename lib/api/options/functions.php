@@ -45,7 +45,26 @@
  */
 function beans_register_options( array $fields, $menu_slug, $section, $args = array() ) {
 
+	/**
+	 * Filter the options fields.
+	 *
+	 * The dynamic portion of the hook name, $section, refers to the section id which defines the group of fields.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array $fields An array of options fields.
+	 */
 	$fields = apply_filters( "beans_options_fields_{$section}", _beans_pre_standardize_fields( $fields ) );
+
+	/**
+	 * Filter the options fields menu slug.
+	 *
+	 * The dynamic portion of the hook name, $section, refers to the section id which defines the group of fields.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array $menu_slug The menu slug.
+	 */
 	$menu_slug = apply_filters( "beans_options_menu_slug_{$section}", $menu_slug );
 
 	// Stop here if the page isn't concerned.
@@ -57,7 +76,7 @@ function beans_register_options( array $fields, $menu_slug, $section, $args = ar
 		return false;
 
 	// Load the class only if this function is called to prevent unnecessary memory usage.
-	require_once( BEANS_API_COMPONENTS_PATH . 'options/class.php' );
+	require_once( BEANS_API_PATH . 'options/class.php' );
 
 	$class = new _Beans_Options();
 	$class->register( $section, $args );
@@ -100,7 +119,7 @@ function _beans_options_page_actions() {
 		return;
 
 	// Load the class only if this function is called to prevent unnecessary memory usage.
-	require_once( BEANS_API_COMPONENTS_PATH . 'options/class.php' );
+	require_once( BEANS_API_PATH . 'options/class.php' );
 
 	$class = new _Beans_Options();
 	$class->actions();

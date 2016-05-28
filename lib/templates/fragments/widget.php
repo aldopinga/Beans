@@ -100,7 +100,7 @@ function beans_widget_rss_content() {
 
 	$options = beans_get_widget( 'options' );
 
-	return '<p><a class="uk-button" href="' . $options ['url'] . '" target="_blank">' . __( 'Read feed', 'beans' ) . '</a><p>';
+	return '<p><a class="uk-button" href="' . beans_get( 'url', $options ) . '" target="_blank">' . __( 'Read feed', 'beans' ) . '</a><p>';
 
 }
 
@@ -133,10 +133,10 @@ function beans_modify_widget_content_attributes( $attributes ) {
 	$current_class = isset( $attributes['class'] ) ? $attributes['class'] . ' ' : '';
 
 	if ( in_array( beans_get_widget( 'type' ), $target ) )
-		$attributes['class'] = $current_class . 'uk-list';
+		$attributes['class'] = $current_class . 'uk-list'; // Automatically escaped.
 
 	if ( $type == 'calendar' )
-		$attributes['class'] = $current_class . 'uk-table uk-table-condensed';
+		$attributes['class'] = $current_class . 'uk-table uk-table-condensed'; // Automatically escaped.
 
 	return $attributes;
 
@@ -159,7 +159,7 @@ function beans_modify_widget_count( $content ) {
 
 	$count = beans_output( 'beans_widget_count', '$1' );
 
-	if ( beans_get( 'dropdown', beans_get_widget( 'options') ) == true ) {
+	if ( beans_get( 'dropdown', beans_get_widget( 'options' ) ) == true ) {
 
 		$output = $count;
 

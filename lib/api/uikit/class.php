@@ -6,7 +6,7 @@
  *
  * @package API\Uikit
  */
-class _Beans_Uikit {
+final class _Beans_Uikit {
 
 	/**
 	 * Compile enqueued items.
@@ -15,12 +15,40 @@ class _Beans_Uikit {
 
 		global $_beans_uikit_enqueued_items;
 
-		// Set filters for third parties, eventhough it should rarely be used.
+		/**
+		 * Filter UIkit enqueued style components.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $components An array of UIkit style component files.
+		 */
 		$styles = apply_filters( 'beans_uikit_euqueued_styles', $this->register_less_components() );
+
+		/**
+		 * Filter UIkit enqueued script components.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $components An array of UIkit script component files.
+		 */
 		$scripts = apply_filters( 'beans_uikit_euqueued_scripts', $this->register_js_components() );
 
-		// Set default args filters for third parties.
+		/**
+		 * Filter UIkit style compiler arguments.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $components An array of UIkit style compiler arguments.
+		 */
 		$styles_args = apply_filters( 'beans_uikit_euqueued_styles_args', array() );
+
+		/**
+		 * Filter UIkit script compiler arguments.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param array $components An array of UIkit script compiler arguments.
+		 */
 		$scripts_args = apply_filters( 'beans_uikit_euqueued_scripts_args', array(
 			'depedencies' => array( 'jquery' )
 		) );
@@ -58,7 +86,7 @@ class _Beans_Uikit {
 
 		// Add fixes.
 		if ( !empty( $components ) )
-			$components = array_merge( $components, array( BEANS_API_COMPONENTS_PATH . 'uikit/src/fixes.less' ) );
+			$components = array_merge( $components, array( BEANS_API_PATH . 'uikit/src/fixes.less' ) );
 
 		return $components;
 
@@ -110,7 +138,7 @@ class _Beans_Uikit {
 		global $_beans_uikit_enqueued_items;
 
 		// Define uikit src directory.
-		$directories = array( BEANS_API_COMPONENTS_PATH . 'uikit/src/less/' . $type );
+		$directories = array( BEANS_API_PATH . 'uikit/src/less/' . $type );
 		// Add the registered theme directories.
 		foreach ( $_beans_uikit_enqueued_items['themes'] as $id => $directory )
 			$directories[] = wp_normalize_path( untrailingslashit( $directory ) );
@@ -129,7 +157,7 @@ class _Beans_Uikit {
 			$type = 'components';
 
 		// Define uikit src directory.
-		return array( BEANS_API_COMPONENTS_PATH . 'uikit/src/js/' . $type );
+		return array( BEANS_API_PATH . 'uikit/src/js/' . $type );
 
 	}
 
@@ -184,11 +212,121 @@ class _Beans_Uikit {
 			unset( $scandir[0], $scandir[1] );
 
 			// Only return the filname and remove empty elements.
-			$components = array_merge( $components, array_filter( array_map( array( $this, 'to_filename'), $scandir ) ) );
+			$components = array_merge( $components, array_filter( array_map( array( $this, 'to_filename' ), $scandir ) ) );
 
 		}
 
 		return $components;
+
+	}
+
+
+	/**
+	 * Auto detect components required.
+	 */
+	function get_autoload_components( $components ) {
+
+		$autoload = array(
+			'core' => array(),
+			'add-ons' => array()
+		);
+
+		$depedencies = array(
+			'panel' => array(
+				'core' => array(
+					'badge'
+				)
+			),
+			'cover' => array(
+				'core' => array(
+					'flex'
+				)
+			),
+			'overlay' => array(
+				'core' => array(
+					'flex'
+				)
+			),
+			'tab' => array(
+				'core' => array(
+					'switcher'
+				)
+			),
+			'modal' => array(
+				'core' => array(
+					'close'
+				)
+			),
+			'scrollspy' => array(
+				'core' => array(
+					'animation'
+				)
+			),
+			'lightbox' => array(
+				'core' => array(
+					'animation',
+					'flex',
+					'close',
+					'modal',
+					'overlay'
+				),
+				'add-ons' => array(
+					'slidenav'
+				)
+			),
+			'slider' => array(
+				'add-ons' => array(
+					'slidenav'
+				)
+			),
+			'slideset' => array(
+				'core' => array(
+					'animation',
+					'flex'
+				),
+				'add-ons' => array(
+					'dotnav',
+					'slidenav'
+				)
+			),
+			'slideshow' => array(
+				'core' => array(
+					'animation',
+					'flex'
+				),
+				'add-ons' => array(
+					'dotnav',
+					'slidenav'
+				)
+			),
+			'parallax' => array(
+				'core' => array(
+					'flex'
+				)
+			),
+			'notify' => array(
+				'core' => array(
+					'close'
+				)
+			)
+		);
+
+		foreach ( (array) $components as $component ) {
+
+			$this_depedencies = beans_get( $component, $depedencies, array() );
+
+			foreach ( $this_depedencies as $depedency ) {
+				$autoload['core'] = array_merge( $autoload['core'], array_flip( beans_get( 'core', $this_depedencies, array() ) ) );
+				$autoload['add-ons'] = array_merge( $autoload['add-ons'], array_flip( beans_get( 'add-ons', $this_depedencies, array() ) ) );
+			}
+
+		}
+
+		// Format autoload back to associative key value array.
+		$autoload['core'] = array_flip( $autoload['core'] );
+		$autoload['add-ons'] = array_flip( $autoload['add-ons'] );
+
+		return $autoload;
 
 	}
 

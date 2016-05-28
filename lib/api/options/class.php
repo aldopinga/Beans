@@ -6,7 +6,7 @@
  *
  * @package API\Options
  */
-class _Beans_Options {
+final class _Beans_Options {
 
 	/**
 	 * Metabox arguments.
@@ -118,8 +118,8 @@ class _Beans_Options {
 			echo '</div>';
 
 			echo '<p class="bs-options-form-actions">
-				<input type="submit" name="beans_save_options" value="Save" class="button-primary">
-				<input type="submit" name="beans_reset_options" value="Reset" class="button-secondary">
+				<input type="submit" name="beans_save_options" value="' . esc_attr__( 'Save', 'tm-beans' ) . '" class="button-primary">
+				<input type="submit" name="beans_reset_options" value="' . esc_attr__( 'Reset', 'tm-beans' ) . '" class="button-secondary">
 			</p>';
 
 		echo '</form>';
